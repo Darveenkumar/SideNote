@@ -1,10 +1,10 @@
+
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&family=Space+Mono&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@700&display=swap');
 
   .glass-wrap {
     width: 100%;
     box-sizing: border-box;
-    /* Liquid Glass Foundation */
     background: rgba(15, 15, 15, 0.15);
     backdrop-filter: blur(24px) saturate(180%);
     -webkit-backdrop-filter: blur(24px) saturate(180%);
@@ -15,8 +15,6 @@
     box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.3);
     overflow: visible;
   }
-  
-  /* Refractive glass border effect */
   .glass-wrap::before {
     content: "";
     position: absolute;
@@ -30,23 +28,19 @@
     pointer-events: none;
     z-index: 2;
   }
-  
   .glass-inner {
-    /* Subtle internal liquid gradient */
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.05), rgba(0, 0, 0, 0.2));
+    background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(0,0,0,0.2));
     border-radius: 15px;
     display: flex;
     align-items: center;
     gap: 0;
     cursor: pointer;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden;
     transition: background 0.3s ease, box-shadow 0.3s ease;
     min-height: 88px;
     z-index: 3;
   }
-  
-  /* Top reflection highlight */
   .glass-inner::after {
     content: '';
     position: absolute;
@@ -55,39 +49,39 @@
     background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
     border-radius: 99px;
   }
-  
-  .glass-inner:hover { 
-    background: linear-gradient(145deg, rgba(255, 255, 255, 0.08), rgba(0, 220, 255, 0.05));
-    box-shadow: inset 0 0 20px rgba(0, 220, 255, 0.05);
+  .glass-inner:hover {
+    background: linear-gradient(145deg, rgba(255,255,255,0.08), rgba(0,220,255,0.05));
+    box-shadow: inset 0 0 20px rgba(0,220,255,0.05);
   }
 
   .cleo-slot {
     flex-shrink: 0;
-    width: 110px; 
+    width: 100px;
     height: 88px;
     position: relative;
     overflow: visible;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
-  
-  .cleo-slot svg {
-    position: absolute;
-    bottom: -2px;
-    left: 50%;
-    width: 80px;
-    animation: cleoFlyHorizontal 6s ease-in-out infinite;
+  .cleo-head {
+    width: 72px;
+    height: 72px;
+    position: relative;
+    transform-origin: bottom center;
+    animation: jumpShake 3.5s infinite;
     filter: drop-shadow(0 8px 18px rgba(0,180,255,0.25));
   }
-  
-  @keyframes cleoFlyHorizontal {
-    0%   { transform: translateX(-80%) translateY(0px) rotate(-3deg); }
-    50%  { transform: translateX(-20%) translateY(-4px) rotate(3deg); }
-    100% { transform: translateX(-80%) translateY(0px) rotate(-3deg); }
+  @keyframes jumpShake {
+    0%, 70%, 100% { transform: translateY(0) rotate(0deg); }
+    10%  { transform: translateY(-14px) rotate(-6deg); }
+    20%  { transform: translateY(-14px) rotate(6deg); }
+    30%  { transform: translateY(-5px) rotate(-4deg); }
+    40%  { transform: translateY(-10px) rotate(4deg); }
+    50%  { transform: translateY(0) rotate(-2deg); }
+    55%  { transform: translateY(-4px) rotate(2deg); }
+    60%  { transform: translateY(0) rotate(0deg); }
   }
-
-  .flame-outer { animation: flameFlick 0.14s ease-in-out infinite alternate; transform-origin: 140px 265px; }
-  .flame-inner { animation: flameFlick2 0.09s ease-in-out infinite alternate; transform-origin: 140px 265px; }
-  @keyframes flameFlick  { 0% { transform: scaleX(0.94) scaleY(0.93); opacity:0.82; } 100% { transform: scaleX(1.06) scaleY(1.07); opacity:1; } }
-  @keyframes flameFlick2 { 0% { transform: scaleX(0.92) scaleY(0.95); } 100% { transform: scaleX(1.08) scaleY(1.05); } }
 
   .divider-line {
     width: 1px;
@@ -95,37 +89,33 @@
     background: linear-gradient(to bottom, transparent, rgba(255,255,255,0.15), transparent);
     flex-shrink: 0;
     margin-right: 16px;
-    z-index: 2; 
+    z-index: 2;
   }
-
   .text-block {
     flex: 1;
     min-width: 0;
     padding: 18px 16px 18px 0;
     z-index: 2;
   }
-  
   .top-row {
     display: flex;
     align-items: center;
     gap: 8px;
     margin-bottom: 6px;
   }
-  
   .label-tag {
-    font-family: 'Space Mono', monospace;
+    font-family: system-ui, -apple-system, sans-serif;
     font-size: 10px;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
     color: #00dcff;
-    background: rgba(0, 220, 255, 0.08);
-    border: 1px solid rgba(0, 220, 255, 0.15);
+    background: rgba(0,220,255,0.08);
+    border: 1px solid rgba(0,220,255,0.15);
     border-radius: 4px;
     padding: 2px 8px;
-    box-shadow: 0 0 10px rgba(0, 220, 255, 0.1);
+    box-shadow: 0 0 10px rgba(0,220,255,0.1);
   }
-  
   .main-title {
     font-family: 'Orbitron', sans-serif;
     font-size: 14px;
@@ -135,16 +125,14 @@
     margin: 0 0 6px;
     text-shadow: 0 2px 4px rgba(0,0,0,0.5);
   }
-  
   .sub-text {
-    font-family: 'Space Mono', monospace;
+    font-family: system-ui, -apple-system, sans-serif;
     font-size: 11px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.6);
+    color: rgba(255,255,255,0.6);
     margin: 0;
     line-height: 1.5;
   }
-
   .chevron-col {
     flex-shrink: 0;
     padding-right: 20px;
@@ -152,43 +140,35 @@
     transition: transform 0.25s, color 0.2s, filter 0.2s;
     z-index: 2;
   }
-  
-  .chevron-col.open { 
-    transform: rotate(180deg); 
-    color: #00dcff; 
+  .chevron-col.open {
+    transform: rotate(180deg);
+    color: #00dcff;
     filter: drop-shadow(0 0 6px rgba(0,220,255,0.4));
   }
-
   .detail-panel {
     max-height: 0;
     overflow: hidden;
     transition: max-height 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
   }
-  
-  .detail-panel.open { 
-    max-height: 120px; 
-  }
-  
+  .detail-panel.open { max-height: 120px; }
   .detail-inner {
-    padding: 12px 20px 16px 126px; 
+    padding: 12px 20px 16px 116px;
     border-top: 1px solid rgba(255,255,255,0.06);
-    font-family: 'Space Mono', monospace;
+    font-family: system-ui, -apple-system, sans-serif;
     font-size: 11px;
     font-weight: 400;
-    color: rgba(255, 255, 255, 0.55);
+    color: rgba(255,255,255,0.55);
     line-height: 1.6;
     background: linear-gradient(180deg, rgba(0,0,0,0.1), transparent);
   }
-  
   .detail-inner a {
     color: #00dcff;
     text-decoration: none;
-    border-bottom: 1px dashed rgba(0, 220, 255, 0.4);
+    border-bottom: 1px dashed rgba(0,220,255,0.4);
     transition: border-color 0.15s ease, color 0.15s ease, text-shadow 0.15s ease;
   }
-  
-  .detail-inner a:hover { 
-    border-color: #00dcff; 
+  .detail-inner a:hover {
+    border-color: #00dcff;
     color: #fff;
     text-shadow: 0 0 8px rgba(0,220,255,0.6);
   }
@@ -198,113 +178,67 @@
   <div class="glass-inner" onclick="togglePanel()" role="button" aria-expanded="false" id="main-card" tabindex="0">
 
     <div class="cleo-slot">
-      <svg viewBox="0 0 280 310" fill="none" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-          <radialGradient id="bG2" cx="38%" cy="28%" r="68%">
-            <stop offset="0%" stop-color="#f2fbff"/>
-            <stop offset="50%" stop-color="#cfeaf8"/>
-            <stop offset="100%" stop-color="#8fc6e6"/>
-          </radialGradient>
-          <radialGradient id="hG2" cx="36%" cy="26%" r="68%">
-            <stop offset="0%" stop-color="#f4fcff"/>
-            <stop offset="45%" stop-color="#bce3f8"/>
-            <stop offset="100%" stop-color="#73bae2"/>
-          </radialGradient>
-          <radialGradient id="vG2" gradientUnits="userSpaceOnUse" cx="122" cy="70" r="96">
-            <stop offset="0%" stop-color="#1f63a8"/>
-            <stop offset="50%" stop-color="#093058"/>
-            <stop offset="100%" stop-color="#03102a"/>
-          </radialGradient>
-          <radialGradient id="earGlow2" cx="40%" cy="35%" r="60%">
-            <stop offset="0%" stop-color="#ff859a"/>
-            <stop offset="75%" stop-color="#f04156"/>
-            <stop offset="100%" stop-color="#b31b2c"/>
-          </radialGradient>
-          <radialGradient id="gG2" cx="35%" cy="28%" r="65%">
-            <stop offset="0%" stop-color="#ffe080"/>
-            <stop offset="100%" stop-color="#c87800"/>
-          </radialGradient>
-          <radialGradient id="rG2" cx="50%" cy="50%" r="50%">
-            <stop offset="0%" stop-color="#ff7388" stop-opacity="0.65"/>
-            <stop offset="100%" stop-color="#f04156" stop-opacity="0"/>
-          </radialGradient>
-          <linearGradient id="plumeOuter2" x1="140" y1="265" x2="140" y2="340" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ffb700" stop-opacity="0.95"/>
-            <stop offset="35%" stop-color="#ff6a00" stop-opacity="0.75"/>
-            <stop offset="100%" stop-color="#ff2200" stop-opacity="0"/>
-          </linearGradient>
-          <linearGradient id="plumeInner2" x1="140" y1="265" x2="140" y2="320" gradientUnits="userSpaceOnUse">
-            <stop offset="0%" stop-color="#ffffff" stop-opacity="1"/>
-            <stop offset="40%" stop-color="#ffff85" stop-opacity="0.9"/>
-            <stop offset="100%" stop-color="#ff5500" stop-opacity="0"/>
-          </linearGradient>
-          <filter id="sh3"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="rgba(0,0,0,.3)"/></filter>
-          <filter id="sh4"><feDropShadow dx="1" dy="2" stdDeviation="3" flood-color="rgba(0,0,0,.2)"/></filter>
-          <filter id="bigGlow2"><feGaussianBlur stdDeviation="4" result="bl"/><feMerge><feMergeNode in="bl"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
-          <filter id="fBlur1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="7"/></filter>
-          <filter id="fBlur2" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="3"/></filter>
-          <pattern id="scanlines2" x="0" y="0" width="1" height="3" patternUnits="userSpaceOnUse"><rect width="1" height="1" fill="rgba(0,0,0,0.08)"/></pattern>
-        </defs>
+      <div class="cleo-head">
+        <svg viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg" width="100%" height="100%">
+          <defs>
+            <radialGradient id="hGrad" cx="36%" cy="26%" r="68%">
+              <stop offset="0%" stop-color="#f4fcff"/>
+              <stop offset="45%" stop-color="#bce3f8"/>
+              <stop offset="100%" stop-color="#73bae2"/>
+            </radialGradient>
+            <radialGradient id="vGrad" gradientUnits="userSpaceOnUse" cx="100" cy="100" r="96">
+              <stop offset="0%" stop-color="#1f63a8"/>
+              <stop offset="50%" stop-color="#093058"/>
+              <stop offset="100%" stop-color="#03102a"/>
+            </radialGradient>
+            <radialGradient id="earGlowH" cx="40%" cy="35%" r="60%">
+              <stop offset="0%" stop-color="#ff859a"/>
+              <stop offset="75%" stop-color="#f04156"/>
+              <stop offset="100%" stop-color="#b31b2c"/>
+            </radialGradient>
+            <radialGradient id="rGrad" cx="50%" cy="50%" r="50%">
+              <stop offset="0%" stop-color="#ff7388" stop-opacity="0.65"/>
+              <stop offset="100%" stop-color="#f04156" stop-opacity="0"/>
+            </radialGradient>
+            <filter id="hShadow"><feDropShadow dx="0" dy="4" stdDeviation="5" flood-color="rgba(0,0,0,.3)"/></filter>
+            <filter id="hBigGlow"><feGaussianBlur stdDeviation="4" result="bl"/><feMerge><feMergeNode in="bl"/><feMergeNode in="SourceGraphic"/></feMerge></filter>
+            <pattern id="hScanlines" x="0" y="0" width="1" height="3" patternUnits="userSpaceOnUse">
+              <rect width="1" height="1" fill="rgba(0,0,0,0.08)"/>
+            </pattern>
+          </defs>
 
-        <g class="flame-outer">
-          <path d="M92 264 Q68 308 98 338 Q140 358 140 358 Q140 358 182 338 Q212 308 188 264 Z" fill="url(#plumeOuter2)" filter="url(#fBlur1)"/>
-        </g>
-        <g class="flame-inner">
-          <path d="M106 264 Q90 302 114 328 Q140 346 140 346 Q140 346 166 328 Q190 302 174 264 Z" fill="url(#plumeInner2)" filter="url(#fBlur2)"/>
-        </g>
+          <ellipse cx="100" cy="100" rx="68" ry="64" fill="url(#hGrad)" filter="url(#hShadow)"/>
 
-        <path d="M85 168 Q80 232 82 266 L198 266 Q200 232 195 168 Q178 154 140 152 Q102 154 85 168Z" fill="url(#bG2)" filter="url(#sh3)"/>
+          <rect x="98" y="30" width="4" height="10" rx="2" fill="#00dcff"/>
+          <ellipse cx="100" cy="29" rx="6" ry="5" fill="#00dcff" filter="url(#hBigGlow)"/>
 
-        <circle cx="114" cy="210" r="9" fill="url(#gG2)" filter="url(#sh4)"/>
-        <circle cx="140" cy="210" r="9" fill="url(#gG2)" filter="url(#sh4)"/>
-        <circle cx="166" cy="210" r="9" fill="url(#gG2)" filter="url(#sh4)"/>
+          <circle cx="26"  cy="104" r="14" fill="url(#earGlowH)" filter="url(#hShadow)"/>
+          <circle cx="174" cy="104" r="14" fill="url(#earGlowH)" filter="url(#hShadow)"/>
 
-        <rect x="112" y="234" width="56" height="20" rx="8" fill="rgba(0,100,200,.23)" stroke="rgba(0,220,255,.4)" stroke-width="1"/>
-        <text x="140" y="248" text-anchor="middle" font-family="'Orbitron', sans-serif" font-size="9" font-weight="700" fill="#00dcff" letter-spacing="2.5">CLEO</text>
+          <rect x="38" y="74" width="124" height="62" rx="28" fill="url(#vGrad)"/>
+          <rect x="38" y="74" width="124" height="62" rx="28" fill="url(#hScanlines)"/>
 
-        <g>
-          <path d="M87 170 Q60 188 56 220 Q54 238 64 242 Q76 246 82 230 Q88 212 98 186Z" fill="url(#bG2)" filter="url(#sh4)"/>
-          <ellipse cx="62" cy="243" rx="13" ry="15" fill="url(#bG2)" filter="url(#sh4)"/>
-        </g>
-        <g>
-          <path d="M193 170 Q220 188 224 220 Q226 238 216 242 Q204 246 198 230 Q192 212 182 186Z" fill="url(#bG2)" filter="url(#sh4)"/>
-          <ellipse cx="218" cy="243" rx="13" ry="15" fill="url(#bG2)" filter="url(#sh4)"/>
-        </g>
+          <ellipse cx="54"  cy="118" rx="10" ry="5" fill="url(#rGrad)"/>
+          <ellipse cx="146" cy="118" rx="10" ry="5" fill="url(#rGrad)"/>
 
-        <ellipse cx="140" cy="153" rx="24" ry="6" fill="url(#gG2)" filter="url(#sh4)"/>
-        <rect x="124" y="134" width="32" height="22" rx="11" fill="url(#bG2)" filter="url(#sh4)"/>
+          <circle cx="72" cy="104" r="14" fill="white"/>
+          <circle cx="72" cy="104" r="9.5" fill="#081022"/>
+          <circle cx="69.5" cy="101.5" r="3.2" fill="white"/>
+          <circle cx="75" cy="107" r="1.5" fill="white" opacity="0.6"/>
 
-        <ellipse cx="140" cy="80" rx="68" ry="64" fill="url(#hG2)" filter="url(#sh3)"/>
+          <circle cx="128" cy="104" r="14" fill="white"/>
+          <circle cx="128" cy="104" r="9.5" fill="#081022"/>
+          <circle cx="125.5" cy="101.5" r="3.2" fill="white"/>
+          <circle cx="131" cy="107" r="1.5" fill="white" opacity="0.6"/>
 
-        <rect x="138" y="10" width="4" height="10" rx="2" fill="#00dcff"/>
-        <ellipse cx="140" cy="9" rx="6" ry="5" fill="#00dcff" filter="url(#bigGlow2)"/>
+          <ellipse id="h-lidLtop" cx="72"  cy="104" rx="14" ry="0" fill="url(#vGrad)"/>
+          <ellipse id="h-lidLbot" cx="72"  cy="104" rx="14" ry="0" fill="url(#vGrad)"/>
+          <ellipse id="h-lidRtop" cx="128" cy="104" rx="14" ry="0" fill="url(#vGrad)"/>
+          <ellipse id="h-lidRbot" cx="128" cy="104" rx="14" ry="0" fill="url(#vGrad)"/>
 
-        <circle cx="66"  cy="84" r="14" fill="url(#earGlow2)" filter="url(#sh4)"/>
-        <circle cx="214" cy="84" r="14" fill="url(#earGlow2)" filter="url(#sh4)"/>
-
-        <rect x="78" y="54" width="124" height="62" rx="28" fill="url(#vG2)"/>
-        <rect x="78" y="54" width="124" height="62" rx="28" fill="url(#scanlines2)" opacity="1"/>
-
-        <ellipse cx="94"  cy="98" rx="10" ry="5" fill="url(#rG2)" opacity="0.9"/>
-        <ellipse cx="186" cy="98" rx="10" ry="5" fill="url(#rG2)" opacity="0.9"/>
-
-        <circle cx="112" cy="84" r="14" fill="white"/>
-        <circle cx="112" cy="84" r="9.5" fill="#081022"/>
-        <circle cx="109.5" cy="81.5" r="3.2" fill="white"/>
-        <circle cx="115" cy="87" r="1.5" fill="white" opacity="0.6"/>
-
-        <circle cx="168" cy="84" r="14" fill="white"/>
-        <circle cx="168" cy="84" r="9.5" fill="#081022"/>
-        <circle cx="165.5" cy="81.5" r="3.2" fill="white"/>
-        <circle cx="171" cy="87" r="1.5" fill="white" opacity="0.6"/>
-
-        <ellipse id="nb-lidLtop" cx="112" cy="84" rx="14" ry="0" fill="url(#vG2)"/>
-        <ellipse id="nb-lidLbot" cx="112" cy="84" rx="14" ry="0" fill="url(#vG2)"/>
-        <ellipse id="nb-lidRtop" cx="168" cy="84" rx="14" ry="0" fill="url(#vG2)"/>
-        <ellipse id="nb-lidRbot" cx="168" cy="84" rx="14" ry="0" fill="url(#vG2)"/>
-
-        <path d="M130 102 Q140 110 150 102" stroke="#5ef0ff" stroke-width="3" stroke-linecap="round" fill="none"/>
-      </svg>
+          <path d="M90 122 Q100 132 110 122" stroke="#5ef0ff" stroke-width="3" stroke-linecap="round" fill="none"/>
+        </svg>
+      </div>
     </div>
 
     <div class="divider-line"></div>
@@ -313,7 +247,7 @@
       <div class="top-row">
         <span class="label-tag">Auto-Refresh</span>
       </div>
-      <p class="main-title">Charts refresh daily at 9:00 AM</p>
+      <p class="main-title">📈 Fresh charts roll out every morning at 9:00 AM.</p>
       <p class="sub-text">All data changes will reflect after the next refresh cycle.</p>
     </div>
 
@@ -326,7 +260,7 @@
 
   <div class="detail-panel" id="detail">
     <div class="detail-inner">
-      Allow a few minutes past the hour for all charts to fully propagate. If your changes are still not updated after 9:00 AM, please reach out to <a href="mailto:darveenkumar.mohan@mcmc.gov.my?subject=Core%20Hub%20Chart%20Issue&body=Hi%20Darveen%2C%0D%0A%0D%0AI%20would%20like%20to%20report%20an%20issue%20with%20a%20Core%20Hub%20chart.%0D%0A%0D%0AChart%20name%3A%0D%0A%0D%0AIssue%20type%3A%0D%0A-%20Data%20not%20updated%0D%0A-%20Incorrect%20values%0D%0A-%20Missing%20data%0D%0A-%20Chart%20not%20loading%0D%0A-%20Visual%20formatting%20issue%0D%0A%0D%0AIssue%20description%3A%0D%0A%0D%0AScreenshot%3A%20(Attach%20if%20applicable)">Darveen</a> for assistance. 
+      Allow a few minutes past the hour for all charts to fully propagate. If your changes are still not updated after 9:00 AM, please reach out to <a href="mailto:darveenkumar.mohan@mcmc.gov.my?subject=Core%20Hub%20Chart%20Issue&body=Hi%20Darveen%2C%0D%0A%0D%0AI%20would%20like%20to%20report%20an%20issue%20with%20a%20Core%20Hub%20chart.%0D%0A%0D%0AChart%20name%3A%0D%0A%0D%0AIssue%20type%3A%0D%0A-%20Data%20not%20updated%0D%0A-%20Incorrect%20values%0D%0A-%20Missing%20data%0D%0A-%20Chart%20not%20loading%0D%0A-%20Visual%20formatting%20issue%0D%0A%0D%0AIssue%20description%3A%0D%0A%0D%0AScreenshot%3A%20(Attach%20if%20applicable)">Darveen</a> for assistance.
     </div>
   </div>
 </div>
@@ -341,18 +275,14 @@
     c.classList.toggle('open', !isOpen);
     card.setAttribute('aria-expanded', String(!isOpen));
   }
-  
   document.getElementById('main-card').addEventListener('keydown', function(e) {
-    if (e.key === 'Enter' || e.key === ' ') { 
-      e.preventDefault(); 
-      togglePanel(); 
-    }
+    if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); togglePanel(); }
   });
 
   function blink() {
     var eyes = [
-      { top: 'nb-lidLtop', bot: 'nb-lidLbot', cy: 84 },
-      { top: 'nb-lidRtop', bot: 'nb-lidRbot', cy: 84 }
+      { top: 'h-lidLtop', bot: 'h-lidLbot', cy: 104 },
+      { top: 'h-lidRtop', bot: 'h-lidRbot', cy: 104 }
     ];
     var steps = 0, MAX = 8, MAX_RY = 14;
     var ci = setInterval(function() {
